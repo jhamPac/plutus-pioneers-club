@@ -4,16 +4,12 @@ module Main (main) where
 import           Blockfrost.Client
 import           RIO
 
-xyz :: IO Text
-xyz = do
-  p <- projectFromFile ".env"
-  pure (projectId p)
-
 
 main :: IO ()
 main = do
-  s <- xyz
-  runSimpleApp $ logInfo $ display s
+  p <- projectFromFile ".env"
+  let p' = projectId p
+  runSimpleApp $ logInfo $ display p'
 
 -- main :: IO ()
 -- main = do
