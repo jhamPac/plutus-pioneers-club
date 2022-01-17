@@ -1,0 +1,13 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "blockfrost-excercise:lib"
+
+    - path: "./app/Main.hs"
+      component: "blockfrost-excercise:exe:blockfrost-excercise-exe"
+
+    - path: "./app/Paths_blockfrost_excercise.hs"
+      component: "blockfrost-excercise:exe:blockfrost-excercise-exe"
+
+    - path: "./test"
+      component: "blockfrost-excercise:test:blockfrost-excercise-test"
