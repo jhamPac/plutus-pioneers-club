@@ -1,8 +1,7 @@
-{-# LANGUAGE NoImplicitPrelude #-}
 module Types where
 
-import RIO
-import RIO.Process
+import           RIO
+import           RIO.Process
 
 -- | Command line arguments
 data Options = Options
@@ -10,9 +9,9 @@ data Options = Options
   }
 
 data App = App
-  { appLogFunc :: !LogFunc
+  { appLogFunc        :: !LogFunc
   , appProcessContext :: !ProcessContext
-  , appOptions :: !Options
+  , appOptions        :: !Options
   -- Add other app-specific configuration information here
   }
 
