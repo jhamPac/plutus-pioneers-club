@@ -33,9 +33,16 @@ library
       Paths_blockfrost_excercise
   hs-source-dirs:
       src
+  default-extensions:
+      BlockArguments
+      DeriveAnyClass
+      NoImplicitPrelude
+      OverloadedStrings
+      StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.11 && <10
+    , blockfrost-client
     , rio >=0.1.12.0
   default-language: Haskell2010
 
@@ -45,9 +52,16 @@ executable blockfrost-excercise-exe
       Paths_blockfrost_excercise
   hs-source-dirs:
       app
+  default-extensions:
+      BlockArguments
+      DeriveAnyClass
+      NoImplicitPrelude
+      OverloadedStrings
+      StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.11 && <10
+    , blockfrost-client
     , blockfrost-excercise
     , optparse-simple
     , rio >=0.1.12.0
@@ -61,9 +75,17 @@ test-suite blockfrost-excercise-test
       Paths_blockfrost_excercise
   hs-source-dirs:
       test
+  default-extensions:
+      BlockArguments
+      DeriveAnyClass
+      NoImplicitPrelude
+      OverloadedStrings
+      StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.11 && <10
+      QuickCheck
+    , base >=4.11 && <10
+    , blockfrost-client
     , blockfrost-excercise
     , hspec
     , rio >=0.1.12.0

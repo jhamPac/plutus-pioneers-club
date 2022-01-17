@@ -3,7 +3,35 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: blockfrost-client-0.1.0.0@sha256:53f97bef11dcaefd9a3efee6d88d2d958fb8af4b02ec61d512861563016dca21,3504
+    pantry-tree:
+      size: 1515
+      sha256: 925ab2da5bf6e440c91381709096b4e229fde6fbdd90683cbf08f394a1f7f755
+  original:
+    hackage: blockfrost-client-0.1.0.0@sha256:53f97bef11dcaefd9a3efee6d88d2d958fb8af4b02ec61d512861563016dca21,3504
+- completed:
+    hackage: blockfrost-api-0.1.0.0@sha256:cea189dbd5fb617602d0c4cb468d19195fe263a30c859ec27fa26e77b56fbf5a,6044
+    pantry-tree:
+      size: 5169
+      sha256: 7458b38bc2ead3e9a10ea7ebdfeb843da53271bb1634a96d646bb0d952df8a18
+  original:
+    hackage: blockfrost-api-0.1.0.0@sha256:cea189dbd5fb617602d0c4cb468d19195fe263a30c859ec27fa26e77b56fbf5a,6044
+- completed:
+    hackage: blockfrost-client-core-0.1.0.0@sha256:5081917383df858b7ca836039a32c80f6f0c789e6dc8bb451fd464225c02cba8,1991
+    pantry-tree:
+      size: 620
+      sha256: 3b4dde0cc6ff6e5dc4eb7b7179e7ec4639d32010f453d2f7d45b76dca3093817
+  original:
+    hackage: blockfrost-client-core-0.1.0.0@sha256:5081917383df858b7ca836039a32c80f6f0c789e6dc8bb451fd464225c02cba8,1991
+- completed:
+    hackage: servant-multipart-client-0.12.1@sha256:d043063e2f33eab86840f87c4bdb16eb3fe4a5847a0b118e4f4265cf3ba4c9b3,1892
+    pantry-tree:
+      size: 400
+      sha256: cb02eea7894a94e5dedf5cb74fd5fc6b989711ebb46a0e14d77f74f3b89dcbe0
+  original:
+    hackage: servant-multipart-client-0.12.1@sha256:d043063e2f33eab86840f87c4bdb16eb3fe4a5847a0b118e4f4265cf3ba4c9b3,1892
 snapshots:
 - completed:
     size: 587126
