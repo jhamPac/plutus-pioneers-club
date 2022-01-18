@@ -8,8 +8,19 @@ import           RIO
 main :: IO ()
 main = do
   p <- projectFromFile ".env"
-  let p' = projectId p
-  runSimpleApp $ logInfo $ display p'
+  res <- runBlockfrost p $ do
+    latestBlocks <- getLatestBlock
+    pure (Right latestBlocks)
+
+  case res of
+    Right e ->
+      case e of
+        Right b -> runSimpleApp $ logInfo $ display $ _blockSlotLeader b
+        _       -> runSimpleApp $ logInfo "again"
+    _       -> runSimpleApp $ logInfo "ok"
+
+
+
 
 -- main :: IO ()
 -- main = do
