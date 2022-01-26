@@ -3,6 +3,7 @@ module Main (main) where
 
 import           Blockfrost.Client
 import           RIO
+import           RIO.List.Partial
 
 
 main :: IO ()
@@ -10,14 +11,18 @@ main = do
   p <- projectFromFile ".env"
   res <- runBlockfrost p $ do
     latestBlocks <- getLatestBlock
-    pure (Right latestBlocks)
+    ers <- tryError $ getAccountRewards "Failed"
+    pure (latestBlocks, ers)
 
   case res of
     Right e ->
       case e of
-        Right b -> runSimpleApp $ logInfo $ display $ _blockSlotLeader b
-        _       -> runSimpleApp $ logInfo "again"
-    _       -> runSimpleApp $ logInfo "ok"
+        (b, _) -> runSimpleApp $ logInfo $ display $ _blockSlotLeader b
+        (_, x) ->
+          case x of
+            Right a -> runSimpleApp $ logInfo $ display $ unPoolId $ _accountRewardPoolId $ head a
+            Left (BlockfrostError y)  -> runSimpleApp $ logInfo $ display $ y
+    _ -> runSimpleApp $ logInfo "Fail"
 
 
 
