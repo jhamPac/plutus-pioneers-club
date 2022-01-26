@@ -3,7 +3,6 @@ module Main (main) where
 
 import           Blockfrost.Client
 import           RIO
-import           RIO.List.Partial
 
 
 main :: IO ()
@@ -15,7 +14,8 @@ main = do
     pure (latestBlocks, ers)
 
   case res of
-    Left (BlockfrostError t) -> runSimpleApp $ logInfo $ display t
+    Left bfe     -> runSimpleApp $ logInfo $ handleError bfe
+    Right (b, _) -> runSimpleApp $ logInfo $ display $ _blockSlotLeader b
 
 
 handleError :: BlockfrostError -> Utf8Builder
