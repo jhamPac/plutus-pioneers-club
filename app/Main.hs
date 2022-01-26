@@ -15,15 +15,19 @@ main = do
     pure (latestBlocks, ers)
 
   case res of
-    Right e ->
-      case e of
-        (b, _) -> runSimpleApp $ logInfo $ display $ _blockSlotLeader b
-        (_, x) ->
-          case x of
-            Right a -> runSimpleApp $ logInfo $ display $ unPoolId $ _accountRewardPoolId $ head a
-            Left (BlockfrostError y)  -> runSimpleApp $ logInfo $ display $ y
-    _ -> runSimpleApp $ logInfo "Fail"
+    Left (BlockfrostError t) -> runSimpleApp $ logInfo $ display t
 
+
+handleError :: BlockfrostError -> Utf8Builder
+handleError b = case b of
+  BlockfrostError t           -> display t
+  BlockfrostBadRequest t      -> display t
+  BlockfrostTokenMissing t    -> display t
+  BlockfrostNotFound          -> display ("Not found" :: Text)
+  BlockfrostIPBanned          -> display ("IP Banned" :: Text)
+  BlockfrostUsageLimitReached -> display ("Limit Reached" :: Text)
+  BlockfrostFatal t           -> display t
+  _                           -> display ("Client error" :: Text)
 
 
 
