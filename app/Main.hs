@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 module Main (main) where
 
 import           Blockfrost.Client
