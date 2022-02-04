@@ -1,7 +1,7 @@
 module Main (main) where
 
 import           Blockfrost.Client
-import           RIO
+import qualified Data.Text         as T
 
 
 main :: IO ()
@@ -13,20 +13,20 @@ main = do
     pure (latestBlocks, ers)
 
   case res of
-    Left bfe     -> runSimpleApp $ logInfo $ handleError bfe
-    Right (b, _) -> runSimpleApp $ logInfo $ display $ _blockSlotLeader b
+    Left bfe     -> print $ handleError bfe
+    Right (b, _) -> print $ _blockSlotLeader b
 
 
-handleError :: BlockfrostError -> Utf8Builder
+handleError :: BlockfrostError -> T.Text
 handleError b = case b of
-  BlockfrostError t           -> display t
-  BlockfrostBadRequest t      -> display t
-  BlockfrostTokenMissing t    -> display t
-  BlockfrostNotFound          -> display ("Not found" :: Text)
-  BlockfrostIPBanned          -> display ("IP Banned" :: Text)
-  BlockfrostUsageLimitReached -> display ("Limit Reached" :: Text)
-  BlockfrostFatal t           -> display t
-  _                           -> display ("Client error" :: Text)
+  BlockfrostError t           -> t
+  BlockfrostBadRequest t      -> t
+  BlockfrostTokenMissing t    -> t
+  BlockfrostNotFound          -> ("Not found" :: T.Text)
+  BlockfrostIPBanned          -> ("IP Banned" :: T.Text)
+  BlockfrostUsageLimitReached -> ("Limit Reached" :: T.Text)
+  BlockfrostFatal t           -> t
+  _                           -> ("Client error" :: T.Text)
 
 
 

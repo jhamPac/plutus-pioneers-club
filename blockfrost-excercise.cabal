@@ -24,11 +24,6 @@ source-repository head
   location: https://github.com/githubuser/blockfrost-excercise
 
 library
-  exposed-modules:
-      Import
-      Run
-      Types
-      Util
   other-modules:
       Paths_blockfrost_excercise
   hs-source-dirs:
@@ -36,14 +31,12 @@ library
   default-extensions:
       BlockArguments
       DeriveAnyClass
-      NoImplicitPrelude
       OverloadedStrings
       StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.11 && <10
     , blockfrost-client
-    , rio >=0.1.12.0
   default-language: Haskell2010
 
 executable blockfrost-excercise-exe
@@ -55,7 +48,6 @@ executable blockfrost-excercise-exe
   default-extensions:
       BlockArguments
       DeriveAnyClass
-      NoImplicitPrelude
       OverloadedStrings
       StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
@@ -64,7 +56,7 @@ executable blockfrost-excercise-exe
     , blockfrost-client
     , blockfrost-excercise
     , optparse-simple
-    , rio >=0.1.12.0
+    , text
   default-language: Haskell2010
 
 test-suite blockfrost-excercise-test
@@ -78,7 +70,6 @@ test-suite blockfrost-excercise-test
   default-extensions:
       BlockArguments
       DeriveAnyClass
-      NoImplicitPrelude
       OverloadedStrings
       StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
@@ -88,5 +79,4 @@ test-suite blockfrost-excercise-test
     , blockfrost-client
     , blockfrost-excercise
     , hspec
-    , rio >=0.1.12.0
   default-language: Haskell2010

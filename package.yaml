@@ -22,13 +22,11 @@ description: Please see the README on Github at <https://github.com/githubuser/b
 default-extensions:
     - BlockArguments
     - DeriveAnyClass
-    - NoImplicitPrelude
     - OverloadedStrings
     - StrictData
 
 dependencies:
     - base >= 4.11 && < 10
-    - rio >= 0.1.12.0
     - blockfrost-client
 
 ghc-options:
@@ -50,6 +48,7 @@ executables:
         dependencies:
             - blockfrost-excercise
             - optparse-simple
+            - text
 
         ghc-options:
             - -threaded
