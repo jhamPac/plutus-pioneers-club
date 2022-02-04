@@ -22,11 +22,11 @@ handleError b = case b of
   BlockfrostError t           -> t
   BlockfrostBadRequest t      -> t
   BlockfrostTokenMissing t    -> t
-  BlockfrostNotFound          -> ("Not found" :: T.Text)
-  BlockfrostIPBanned          -> ("IP Banned" :: T.Text)
-  BlockfrostUsageLimitReached -> ("Limit Reached" :: T.Text)
+  BlockfrostNotFound          -> "Not found"
+  BlockfrostIPBanned          -> "IP Banned"
+  BlockfrostUsageLimitReached -> "Limit Reached"
   BlockfrostFatal t           -> t
-  _                           -> ("Client error" :: T.Text)
+  _                           -> "Client error"
 
 
 
