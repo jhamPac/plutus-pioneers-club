@@ -6,13 +6,13 @@ import qualified Data.Text         as T
 
 main :: IO ()
 main = do
-  p <- projectFromFile ".env"
-  res <- runBlockfrost p $ do
+  project <- projectFromFile ".env"
+  result <- runBlockfrost project $ do
     latestBlocks <- getLatestBlock
-    ers <- tryError $ getAccountRewards "Failed"
-    pure (latestBlocks, ers)
+    errors <- tryError $ getAccountRewards "Failed"
+    pure (latestBlocks, errors)
 
-  case res of
+  case result of
     Left bfe     -> print $ handleError bfe
     Right (b, _) -> print $ _blockSlotLeader b
 
