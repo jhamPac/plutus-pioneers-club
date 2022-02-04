@@ -20,13 +20,11 @@ main = do
 handleError :: BlockfrostError -> T.Text
 handleError b = case b of
   BlockfrostError t           -> t
-  BlockfrostBadRequest t      -> t
-  BlockfrostTokenMissing t    -> t
   BlockfrostNotFound          -> "Not found"
   BlockfrostIPBanned          -> "IP Banned"
   BlockfrostUsageLimitReached -> "Limit Reached"
-  BlockfrostFatal t           -> t
   _                           -> "Client error"
+
 
 
 
