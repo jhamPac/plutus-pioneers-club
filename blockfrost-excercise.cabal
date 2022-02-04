@@ -63,7 +63,6 @@ test-suite blockfrost-excercise-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      UtilSpec
       Paths_blockfrost_excercise
   hs-source-dirs:
       test
