@@ -35,7 +35,8 @@ library
       StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.11 && <10
+      aeson
+    , base >=4.11 && <10
     , blockfrost-client
     , scotty
   default-language: Haskell2010
@@ -53,7 +54,8 @@ executable blockfrost-excercise-exe
       StrictData
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.11 && <10
+      aeson
+    , base >=4.11 && <10
     , blockfrost-client
     , blockfrost-excercise
     , optparse-simple
@@ -76,6 +78,7 @@ test-suite blockfrost-excercise-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
+    , aeson
     , base >=4.11 && <10
     , blockfrost-client
     , blockfrost-excercise

@@ -1,9 +1,20 @@
+{-# LANGUAGE DeriveGeneric #-}
+
 module Main (main) where
 
 import           Blockfrost.Client
+import           Data.Aeson        (FromJSON, ToJSON)
 import qualified Data.Text         as T
+import           GHC.Generics
 import           Web.Scotty
 
+data User = User {
+        userId   :: Int,
+        userName :: String
+    } deriving (Generic, Show)
+
+instance FromJSON User
+instance ToJSON User
 
 main :: IO ()
 main = scotty 3000 $ do

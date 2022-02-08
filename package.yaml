@@ -29,6 +29,7 @@ dependencies:
     - base >= 4.11 && < 10
     - blockfrost-client
     - scotty
+    - aeson
 
 ghc-options:
     - -Wall
