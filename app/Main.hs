@@ -2,10 +2,14 @@ module Main (main) where
 
 import           Blockfrost.Client
 import qualified Data.Text         as T
+import           Web.Scotty
 
 
 main :: IO ()
-main = print ("wait" :: T.Text)
+main = scotty 3000 $ do
+    get "/hello/:name" $ do
+        n <- param "name"
+        text $ mconcat ["Hello ", n, "!"]
 
 call = do
     project <- projectFromFile ".env"
