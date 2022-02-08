@@ -37,6 +37,7 @@ library
   build-depends:
       base >=4.11 && <10
     , blockfrost-client
+    , scotty
   default-language: Haskell2010
 
 executable blockfrost-excercise-exe
@@ -56,6 +57,7 @@ executable blockfrost-excercise-exe
     , blockfrost-client
     , blockfrost-excercise
     , optparse-simple
+    , scotty
     , text
   default-language: Haskell2010
 
@@ -78,4 +80,5 @@ test-suite blockfrost-excercise-test
     , blockfrost-client
     , blockfrost-excercise
     , hspec
+    , scotty
   default-language: Haskell2010

@@ -5,7 +5,9 @@ import qualified Data.Text         as T
 
 
 main :: IO ()
-main = do
+main = print ("wait" :: T.Text)
+
+call = do
     project <- projectFromFile ".env"
     result <- runBlockfrost project $ do
         latestBlocks <- getLatestBlock
