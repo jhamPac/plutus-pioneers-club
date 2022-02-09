@@ -16,11 +16,18 @@ data User = User {
 instance FromJSON User
 instance ToJSON User
 
+users :: [User]
+users = [User {userId=1, userName="Alice"}, User {userId=2, userName="Bob"}]
+
 main :: IO ()
 main = scotty 3000 $ do
     get "/hello/:name" $ do
         n <- param "name"
         text $ mconcat ["Hello ", n, "!"]
+
+    get "/users/:id" $ do
+        i <- param "id"
+        json (filter (\user -> userId user == i) users)
 
 call = do
     project <- projectFromFile ".env"
