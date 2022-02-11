@@ -12,12 +12,12 @@ main :: IO ()
 main =  do
     project <- projectFromFile ".env"
     result <- runBlockfrost project $ do
-                    r <- getAssetsByPolicy "c364930bd612f42e14d156e1c5410511e77f64cab8f2367a9df544d1"
-                    if length r > 1
+                    ats <- getAssetsByPolicy "c364930bd612f42e14d156e1c5410511e77f64cab8f2367a9df544d1"
+                    if length ats > 1
                         then
                             do
-                                let a = r !! 1
-                                details <- getAssetDetails $ AssetId (_assetInfoAsset a)
+                                let asset = ats !! 1
+                                details <- getAssetDetails $ AssetId (_assetInfoAsset asset)
                                 case _assetDetailsOnchainMetadata details of
                                     Nothing -> return ("No asset meta data" :: T.Text)
                                     Just d  -> return (_assetOnChainMetadataName d)
