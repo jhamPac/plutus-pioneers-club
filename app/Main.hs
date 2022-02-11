@@ -22,14 +22,3 @@ main =  do
     case result of
         Left e  -> print e
         Right t -> print t
-
-
-
--- main = scotty 3000 $ do
---     get "/hello/:name" $ do
---         n <- param "name"
---         text $ mconcat ["Hello ", n, "!"]
-
---     get "/users/:id" $ do
---         i <- param "id"
---         json (filter (\user -> userId user == i) users)
