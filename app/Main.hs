@@ -1,6 +1,11 @@
 module Main (main) where
 
-import           Blockfrost.Client
+import           Blockfrost.Client (AssetDetails (_assetDetailsOnchainMetadata),
+                                    AssetId (AssetId),
+                                    AssetInfo (_assetInfoAsset),
+                                    AssetOnChainMetadata (_assetOnChainMetadataName),
+                                    getAssetDetails, getAssetsByPolicy,
+                                    projectFromFile, runBlockfrost)
 import qualified Data.Text         as T
 
 main :: IO ()
