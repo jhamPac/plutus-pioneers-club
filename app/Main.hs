@@ -1,5 +1,3 @@
-{-# LANGUAGE DeriveGeneric #-}
-
 module Main (main) where
 
 import           Blockfrost.Client
