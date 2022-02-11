@@ -3,51 +3,32 @@
 module Main (main) where
 
 import           Blockfrost.Client
-import           Data.Aeson        (FromJSON, ToJSON)
 import qualified Data.Text         as T
-import           GHC.Generics
-import           Web.Scotty
-
-data User = User {
-        userId   :: Int,
-        userName :: String
-    } deriving (Generic, Show)
-
-instance FromJSON User
-instance ToJSON User
-
-users :: [User]
-users = [User {userId=1, userName="Alice"}, User {userId=2, userName="Bob"}]
 
 main :: IO ()
-main = scotty 3000 $ do
-    get "/hello/:name" $ do
-        n <- param "name"
-        text $ mconcat ["Hello ", n, "!"]
-
-    get "/users/:id" $ do
-        i <- param "id"
-        json (filter (\user -> userId user == i) users)
-
-call = do
+main =  do
     project <- projectFromFile ".env"
     result <- runBlockfrost project $ do
-        latestBlocks <- getLatestBlock
-        errors <- tryError $ getAccountRewards "Failed"
-        pure (latestBlocks, errors)
+                    r <- getAssetsByPolicy "c364930bd612f42e14d156e1c5410511e77f64cab8f2367a9df544d1"
+                    case r of
+                        (_:y:_) -> do
+                            details <- getAssetDetails $ AssetId (_assetInfoAsset y)
+                            case _assetDetailsOnchainMetadata details of
+                                Nothing -> return ("Nah" :: T.Text)
+                                Just d  -> return (_assetOnChainMetadataName d)
+                        _       -> return "Not enough assets"
 
     case result of
-        Left bfe     -> print $ handleError bfe
-        Right (b, _) -> print $ _blockSlotLeader b
+        Left e  -> print e
+        Right t -> print t
 
 
-handleError :: BlockfrostError -> T.Text
-handleError b = case b of
-    BlockfrostError t           -> t
-    BlockfrostBadRequest t      -> t
-    BlockfrostTokenMissing t    -> t
-    BlockfrostFatal t           -> t
-    BlockfrostNotFound          -> "Not found"
-    BlockfrostIPBanned          -> "IP Banned"
-    BlockfrostUsageLimitReached -> "Limit Reached"
-    _                           -> "Client error"
+
+-- main = scotty 3000 $ do
+--     get "/hello/:name" $ do
+--         n <- param "name"
+--         text $ mconcat ["Hello ", n, "!"]
+
+--     get "/users/:id" $ do
+--         i <- param "id"
+--         json (filter (\user -> userId user == i) users)
