@@ -30,6 +30,7 @@ dependencies:
     - blockfrost-client
     - scotty
     - aeson
+    - text
 
 ghc-options:
     - -Wall
